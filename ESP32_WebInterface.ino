@@ -12,8 +12,8 @@
 //	return String(baseMacChr);
 //}
 
-const char* ssid = "WiFi Moka";
-const char* password = "MePasstaNotYourPassta";
+const char* ssid = "*****";
+const char* password = "*****";
 const char* host = "api.thingspeak.com";
 const char* streamId = "....................";
 const char* privateKey = "....................";
