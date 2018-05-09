@@ -2,8 +2,8 @@
 #include <WiFi.h>
 #include "esp_system.h"
 
-const char* ssid = "*****";
-const char* password = "*****";
+const char* ssid = "WiFi Moka";
+const char* password = "MePasstaNotYourPassta";
 const char* host = "api.thingspeak.com";
 const char* streamId = "....................";
 const char* privateKey = "....................";
@@ -85,23 +85,63 @@ void loop()
 			char * token;
 			char BrightnessValue[4];
 			char NoLValue[3];
+			char Color[7];
+			//uint8_t setColor;
 
 			line.toCharArray(lineContent, 20);
 			
 			token = strtok(lineContent, ",");
 			strcpy(BrightnessValue, token);
 			brightness = atoi(BrightnessValue);
+			FastLED.setBrightness(brightness);
 
 			token = strtok(NULL, ",");
 			strcpy(NoLValue,token);
 			numberofLEDs = atoi(NoLValue);
 
-			FastLED.setBrightness(brightness);
-
-			for (int i = 0; i < numberofLEDs; i++)
+			token = strtok(NULL, ",");
+			strcpy(Color, token);
+			
+			//set the color
+			if (strcmp(Color, "Red") == 0)
 			{
-				leds[i] = CRGB::White;
-				FastLED.show();
+				for (int i = 0; i < numberofLEDs; i++)
+				{
+					leds[i] = CRGB::Green;
+					FastLED.show();
+				}
+			}
+			if (strcmp(Color, "Green") == 0)
+			{
+				for (int i = 0; i < numberofLEDs; i++)
+				{
+					leds[i] = CRGB::Red;
+					FastLED.show();
+				}
+			}
+			if (strcmp(Color, "Blue") == 0)
+			{
+				for (int i = 0; i < numberofLEDs; i++)
+				{
+					leds[i] = CRGB::Blue;
+					FastLED.show();
+				}
+			}
+			if (strcmp(Color, "Pink") == 0)
+			{
+				for (int i = 0; i < numberofLEDs; i++)
+				{
+					leds[i].setRGB(0, 255, 255); //actually GRB;
+					FastLED.show();
+				}
+			}
+			if (strcmp(Color, "White") == 0)
+			{
+				for (int i = 0; i < numberofLEDs; i++)
+				{
+					leds[i] = CRGB::White;
+					FastLED.show();
+				}
 			}
 
 			for (int i = numberofLEDs; i < NUM_LEDS; i++)
@@ -109,6 +149,7 @@ void loop()
 				leds[i] = CRGB::Black;
 				FastLED.show();
 			}
+
 		}
 		lineNumber++;
 	}
