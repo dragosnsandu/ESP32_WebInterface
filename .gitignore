@@ -260,3 +260,7 @@ paket-files/
 __pycache__/
 *.pyc
 /CppProperties.json
+/__vm
+/ESP32_WebInterface.sln
+/ESP32_WebInterface.vcxproj
+/ESP32_WebInterface.vcxproj.filters
