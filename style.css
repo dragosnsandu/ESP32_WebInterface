@@ -1,0 +1,38 @@
+#wrapper {
+	width: 50%;
+	margin: 0 auto;
+	background-color: #939393;
+	padding: 20px;
+	border-radius: 50px;
+	text-align center;
+}
+
+#wrapper, .brightness, .numleds, .colors {
+	text-align: center;
+}
+
+#wrapper p, #wrapper h1 {
+	display: inline-block;
+	font-size: 1.5em;
+	font-family: 'Oswald', sans-serif;
+	font-weight: Bold;
+	color: #FFF;
+}
+
+.brightness input {
+	margin-left: 10%;
+	display: inline-block;
+}
+
+.numleds input, .colors select{
+	margin-left: 10%;
+	display: inline-block;
+}
+
+.results {
+	text-align: center;
+}
+
+.results input {
+	display: inline-block;
+}
